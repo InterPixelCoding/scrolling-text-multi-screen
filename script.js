@@ -18,7 +18,7 @@ close_menu.addEventListener("click", () => {
 
 function calculate_time_difference(next_time) {
     // Get the current time from the World Time API
-    return fetch('http://worldtimeapi.org/api/ip')
+    return fetch('https://worldtimeapi.org/api/ip')
         .then(response => response.json())
         .then(data => {
             // Extract the current time from the response
