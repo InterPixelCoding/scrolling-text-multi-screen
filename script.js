@@ -1,7 +1,7 @@
 const span = document.querySelector('.wrapper > span');
 const ready = document.querySelector('button');
 const global_screen_width = 1920;
-const test = true;
+const test = false;
 
 function calculate_time_difference(next_time) {
     var current_time = new Date().getTime();
