@@ -44,6 +44,10 @@ span {
     justify-content: space-between;
 }
 
+.absolute-controls > * {
+    transition: transform 200ms ease;
+}
+
 .absolute-controls input, textarea, button {
     background: rgba(255,255,255,0.3);
     outline: none;
@@ -57,7 +61,7 @@ span {
 .absolute-controls input {
     font-size: 1.5rem;
     height: .6em;
-    width: 1em;
+    width: 1.8em;
     padding-left: .5em;
 }
 
@@ -80,4 +84,11 @@ button {
 button:focus, button:active {
     background: rgba(255, 255, 255, 0.5);
 }
+
+.close {
+    width: 2rem;
+    height: 2rem;
+}
+
+.close > svg {width: 100%; height: 100%; cursor: pointer;}
 
