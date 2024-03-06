@@ -28,9 +28,13 @@ ready.addEventListener("click", () => {
     let text = document.querySelector('textarea').value;
 
     span.style.opacity = '0';
-    if(text !== "" || text != undefined) {
+
+    console.log(text)
+
+    if(text !== "Default") {
         span.textContent = text;
     }
+
     let next_time = calculate_time_difference(time);
     if(test) {next_time = 0}
     setTimeout(() => {
