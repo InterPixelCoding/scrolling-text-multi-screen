@@ -1,7 +1,7 @@
 const span = document.querySelector('.wrapper > span');
 const ready = document.querySelector('button');
 const close_menu = document.querySelector('.close');
-const global_screen_width = 1920;
+let global_screen_width = 1920;
 const test = false;
 
 close_menu.addEventListener("click", () => {
