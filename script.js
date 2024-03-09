@@ -1,5 +1,5 @@
 const span = document.querySelector('.wrapper > span');
-const ready = document.querySelector('button');
+const ready = document.querySelector('.ready');
 const close_menu = document.querySelector('.close');
 let global_screen_width = 1920;
 const test = false;
@@ -85,3 +85,61 @@ function animate_text(span, x, speed) {
         move_span(span, x-=speed)
     }, 500);
 }
+
+const adjust = document.querySelector('button.adjust-position');
+
+adjust.addEventListener("click", () => {
+    adjust.classList.toggle("adjusting");
+    if(adjust.classList.contains("adjusting")) {
+        adjust.textContent = 'Adjusting... (Press ENTER to Save)';
+    } else {
+        adjust.textContent = 'Text Adjustment Saved';
+    }
+});
+
+document.querySelector('span.adjust-text').addEventListener('mousedown', handle_mouse_down);
+document.addEventListener('keydown', handle_key_down);
+
+let is_adjusting = false;
+let initial_x = 0;
+let initial_y = 0;
+
+function handle_mouse_down(event) {
+    if (!adjust.classList.contains('adjusting')) return;
+    is_adjusting = true;
+    initial_x = event.clientX;
+    initial_y = event.clientY;
+}
+
+function handle_mouse_move(event) {
+    if (!is_adjusting) return;
+    const offset_x = event.clientX - initial_x;
+    const offset_y = event.clientY - initial_y;
+    const span = document.querySelector('span.adjust-text');
+    span.style.transform = `translate(${offset_x}px, ${offset_y}px)`;
+}
+
+function handle_mouse_up() {
+    if (!is_adjusting) return;
+    is_adjusting = false;
+}
+
+function handle_key_down(event) {
+    if (event.key === 'Enter') {
+        if (is_adjusting) {
+            const span = document.querySelector('span.adjust-text');
+            const transform = span.style.transform;
+            span.style.transform = transform ? transform : '';
+            adjust.classList.remove("adjusting");
+            adjust.textContent = 'Text Adjustment Saved';
+        }
+    }
+}
+
+document.addEventListener('mousemove', handle_mouse_move);
+document.addEventListener('mouseup', handle_mouse_up);
+
+
+
+
+

@@ -11,13 +11,14 @@
 </head>
 <body>
     <div class="absolute-controls">
+        <button tabindex="1" class="rgb">RGB (Coming Soon)</button>
         <div class="computer-number-container">
             <h2>Computer Number</h2>
             <input type="number" class="computer-number">
             <h2>Time of next scroll</h2>
             <input type="time" class="time">
         </div>
-        <button tabindex="1">Ready!</button>
+        <button tabindex="1" class="ready">Ready!</button>
         <div class="computer-number-container">
             <h2>Text</h2>
             <textarea>Default</textarea>
@@ -49,7 +50,7 @@
         </div>
     </div>
     <div class="wrapper">
-        <span>
+        <span class="adjust-text">
             According to all known laws of aviation, there is no way a bee should be able to fly.
             Its wings are too small to get its fat little body off the ground.
             The bee, of course, flies anyway because bees don't care what humans think is impossible.
@@ -765,6 +766,9 @@
             That would hurt.
             No.
         </span>
+    </div>
+    <div class="adjust-position-container">
+        <button class="adjust-position">Adjust Text Position</button>
     </div>
 </body>
 </html>
