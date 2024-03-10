@@ -30,10 +30,24 @@ body {
 span {
     position: absolute;
     left: 1vw;
-    font-size: 60vh;
+    font-size: 900px;
     user-select: none;
     -webkit-user-select: none;
-    transition: 500ms linear left;
+    transition: 600ms linear transform;
+    filter: drop-shadow(0 5rem 2rem black)
+}
+
+span.rgb {
+    background: repeating-linear-gradient(
+        to right, 
+        hsl(0, 100%, 50%) 0%, 
+        hsl(100, 100%, 50%) .1%, 
+        hsl(244, 100%, 50%) .2%, 
+        hsl(0, 100%, 50%) .3%
+    );
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 .absolute-controls {

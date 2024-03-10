@@ -1,8 +1,16 @@
 const span = document.querySelector('.wrapper > span');
 const ready = document.querySelector('.ready');
+const rgb = document.querySelector('.rgb');
 const close_menu = document.querySelector('.close');
 let global_screen_width = 1920;
-const test = false;
+const dual_monitor_testing = 'translate(-2050px, 166px);';
+const test = true;
+
+function toggle_class_on_click(button, target, class_name) {
+    button.addEventListener("click", () => {target.classList.toggle(class_name)})
+}
+
+toggle_class_on_click(rgb, span, "rgb")
 
 close_menu.addEventListener("click", () => {
     const menu_items = document.querySelectorAll('.absolute-controls > *:not(:last-child)');
@@ -77,7 +85,7 @@ ready.addEventListener("click", () => {
 })
 
 function move_span(span, amount) {
-    span.style.left = `${amount}px`;
+    span.style.transform = `translateX(${amount}px)`;
 }
 
 function animate_text(span, x, speed) {
@@ -103,20 +111,26 @@ document.addEventListener('keydown', handle_key_down);
 let is_adjusting = false;
 let initial_x = 0;
 let initial_y = 0;
+let initial_top = 0;
+let initial_left = 0;
 
 function handle_mouse_down(event) {
     if (!adjust.classList.contains('adjusting')) return;
     is_adjusting = true;
     initial_x = event.clientX;
     initial_y = event.clientY;
+    const span = document.querySelector('span.adjust-text');
+    initial_top = span.offsetTop;
+    initial_left = span.offsetLeft;
 }
 
 function handle_mouse_move(event) {
     if (!is_adjusting) return;
+    const span = document.querySelector('span.adjust-text');
     const offset_x = event.clientX - initial_x;
     const offset_y = event.clientY - initial_y;
-    const span = document.querySelector('span.adjust-text');
-    span.style.transform = `translate(${offset_x}px, ${offset_y}px)`;
+    span.style.top = `${initial_top + offset_y}px`;
+    span.style.left = `${initial_left + offset_x}px`;
 }
 
 function handle_mouse_up() {
@@ -128,8 +142,6 @@ function handle_key_down(event) {
     if (event.key === 'Enter') {
         if (is_adjusting) {
             const span = document.querySelector('span.adjust-text');
-            const transform = span.style.transform;
-            span.style.transform = transform ? transform : '';
             adjust.classList.remove("adjusting");
             adjust.textContent = 'Text Adjustment Saved';
         }
