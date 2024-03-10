@@ -4,7 +4,7 @@ const rgb = document.querySelector('.rgb');
 const close_menu = document.querySelector('.close');
 let global_screen_width = 1920;
 const dual_monitor_testing = 'translate(-2050px, 166px);';
-const test = true;
+const test = false;
 
 function toggle_class_on_click(button, target, class_name) {
     button.addEventListener("click", () => {target.classList.toggle(class_name)})
